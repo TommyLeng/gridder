@@ -5,7 +5,7 @@ import (
 	"image/color"
 	"io"
 
-	"github.com/fogleman/gg"
+	"github.com/TommyLeng/gridder/pkg/gg"
 	"golang.org/x/image/font"
 )
 
@@ -55,6 +55,13 @@ func (g *Gridder) EncodePNG(w io.Writer) error {
 	g.paintGrid()
 	g.paintBorder()
 	return g.ctx.EncodePNG(w)
+}
+
+// SaveJPG saves to JPG
+func (g *Gridder) SaveJPG(quality int) error {
+	g.paintGrid()
+	g.paintBorder()
+	return g.ctx.SaveJPG(g.imageConfig.GetName(), quality)
 }
 
 // PaintCell paints Cell
