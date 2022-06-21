@@ -5,7 +5,7 @@ import (
 	"log"
 
 	"github.com/golang/freetype/truetype"
-	"github.com/shomali11/gridder"
+	"github.com/tommyLeng/gridder"
 	"golang.org/x/image/font/gofont/goregular"
 )
 
