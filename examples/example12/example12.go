@@ -9,7 +9,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/tommyLeng/gridder"
+	"github.com/TommyLeng/gridder"
 )
 
 func main() {

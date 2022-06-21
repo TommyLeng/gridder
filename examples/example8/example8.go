@@ -4,8 +4,8 @@ import (
 	"image/color"
 	"log"
 
+	"github.com/TommyLeng/gridder"
 	"github.com/golang/freetype/truetype"
-	"github.com/tommyLeng/gridder"
 	"golang.org/x/image/font/gofont/goregular"
 )
 
