@@ -221,8 +221,28 @@ func (g *Gridder) DrawString(row int, column int, text string, fontFace font.Fac
 	return nil
 }
 
+// DrawString draws a string in a cell
+func (g *Gridder) DrawStringDirect(row int, column int, text string, stringConfigs ...StringConfig) error {
+	err := g.verifyInBounds(row, column)
+	if err != nil {
+		return err
+	}
+
+	center := g.getCellCenter(row, column)
+	stringConfig := getFirstStringConfig(stringConfigs...)
+	g.ctx.Push()
+	g.ctx.SetColor(stringConfig.GetColor())
+	g.ctx.RotateAbout(gg.Radians(stringConfig.GetRotate()), center.X, center.Y)
+	g.ctx.DrawStringAnchored(text, center.X, center.Y, 0.5, 0.35)
+	g.ctx.Pop()
+	return nil
+}
+
 func (g *Gridder) MeasureString(s string) (w, h float64) {
 	return g.ctx.MeasureString(s)
+}
+func (g *Gridder) SetFontFace(fontFace font.Face) {
+	g.ctx.SetFontFace(fontFace)
 }
 
 func (g *Gridder) paintBackground() {
