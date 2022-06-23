@@ -221,6 +221,10 @@ func (g *Gridder) DrawString(row int, column int, text string, fontFace font.Fac
 	return nil
 }
 
+func (g *Gridder) MeasureString(s string) (w, h float64) {
+	return g.ctx.MeasureString(s)
+}
+
 func (g *Gridder) paintBackground() {
 	margin := float64(g.gridConfig.GetMarginWidth())
 	g.ctx.Translate(margin, margin)
